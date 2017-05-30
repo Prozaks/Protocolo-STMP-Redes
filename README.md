@@ -1,51 +1,62 @@
-a# CakePHP Application Skeleton
-
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
-
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+#Proyecto TDB: Implementación Protocolo STMP
 
 ## Installation
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+1. Instalación de Apache.
+	sudo apt-get update
+	sudo apt-get install apache2
 
-If Composer is installed globally, run
+	Comprobar en http://localhost
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+2. Instalación MySQL
+	sudo apt-get install mysql-server
+	(Le pedirá contraseña root)
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+3. PHP
+	sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
+	sudo apt-get install php-intl
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+	Comprobar:
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+	sudo nano /var/www/html/info.php
+	Pegar:
 
-```bash
-bin/cake server -p 8765
-```
+	<?php
+		phpinfo();
+	?>
 
-Then visit `http://localhost:8765` to see the welcome page.
+	Entrar a http://localhost/info.php
 
-## Update
+4. PHPMyAdmin
+	sudo apt-get update
+	sudo apt-get install phpmyadmin php-mbstring php-gettext
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+	Seleccionar Apache2
+	Decir "yes" a dbconfig-common
+	(Pedirá contraseña de administrador)
 
-## Configuration
+	sudo systemctl restart apache2
 
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
+	Entrar a https://localhost/phpmyadmin
+		Si existe error:
+			sudo gedit /etc/apache2/apache2.conf
+			Pegar al final del archivo:
+				include /etc/phpmyadmin/apache.conf
+			Reiniciar apache:
+				sudo systemctl restart apache2
 
-## Layout
+5. Cakephp
+	5.1. Instalar Composer
+		curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+		sudo mv composer.phar /usr/local/bin/composer
+
+	5.2. Crear el primer proyecto con Cakephp en el Escritorio
+		php composer.phar create-project --prefer-dist cakephp/app my_app_name
+
+		Si hay error:
+			whereis composer.phar
+
+			Copiar y pegar:
+
+			php [ACÁ] create-project --prefer-dist cakephp/app my_app_name
