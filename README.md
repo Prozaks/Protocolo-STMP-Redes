@@ -60,3 +60,11 @@
 			Copiar y pegar:
 
 			php [ACÁ] create-project --prefer-dist cakephp/app my_app_name
+
+6. Clonar este repositorio, ir a la carpeta raíz del proyecto y ejecutar
+    bin/cake server
+    
+    http://localhost:8765/notification
+    
+    Si se apreta el botón, se enviará un correo electrónico desde "voluntariosdbd@gmail.com" al correo puesto en 
+    /src/controller/NotificationCntroller.php
