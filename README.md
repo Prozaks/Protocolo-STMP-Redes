@@ -1,4 +1,4 @@
-#Proyecto TDB: Implementación Protocolo STMP
+#Proyecto Redes: Implementación Protocolo STMP
 
 ## Installation
 
